@@ -31,7 +31,6 @@ resource "azurerm_kubernetes_cluster" "main" {
   }
 
 
-
   lifecycle {
     ignore_changes = [
       default_node_pool[0].node_count,
@@ -40,7 +39,17 @@ resource "azurerm_kubernetes_cluster" "main" {
     ]
   }
 
+  monitor_metrics {
+    annotations_allowed = var.monitor_metrics_annotations_allowed
+    labels_allowed      = var.monitor_metrics_labels_allowed
 
+  }
+
+  oms_agent {
+    log_analytics_workspace_id      = var.law_id
+    msi_auth_for_monitoring_enabled = true
+
+  }
 
   azure_active_directory_role_based_access_control {
     managed                = var.enable_aad_rbac
@@ -65,7 +74,7 @@ resource "azurerm_kubernetes_cluster" "main" {
   network_profile {
     network_plugin = var.network_policy == "azure" ? "azure" : var.network_plugin
 
-    service_cidr = var.service_cidr
+    service_cidr      = var.service_cidr
     # IP address within the Kubernetes service address range that will be used by cluster service discovery (kube-dns).
     # Don't use the first IP address in your address range, such as .1. The first address in your subnet range is used for the kubernetes.default.svc.cluster.local address.
     dns_service_ip    = cidrhost(var.service_cidr, -2)

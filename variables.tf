@@ -326,3 +326,13 @@ variable "tags" {
   }
   description = "A mapping of tags to assign to the resource."
 }
+variable "law_id" {
+  default = ""
+  description = "Log Analytics Workspace ID"
+}
+variable "monitor_metrics_annotations_allowed" {
+  default = ""
+}
+variable "monitor_metrics_labels_allowed" {
+  default = ""
+}
