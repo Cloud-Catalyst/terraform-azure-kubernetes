@@ -327,12 +327,16 @@ variable "tags" {
   description = "A mapping of tags to assign to the resource."
 }
 variable "law_id" {
-  default = ""
+  default = null
   description = "Log Analytics Workspace ID"
 }
 variable "monitor_metrics_annotations_allowed" {
-  default = ""
+  default = null
 }
 variable "monitor_metrics_labels_allowed" {
-  default = ""
+  default = null
+}
+variable "automatic_channel_upgrade" {
+  default = "none"
+  description = "The upgrade channel for this Kubernetes Cluster. Possible values are patch, rapid, node-image and stable"
 }

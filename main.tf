@@ -39,6 +39,8 @@ resource "azurerm_kubernetes_cluster" "main" {
     ]
   }
 
+  automatic_channel_upgrade = var.automatic_channel_upgrade
+
   monitor_metrics {
     annotations_allowed = var.monitor_metrics_annotations_allowed
     labels_allowed      = var.monitor_metrics_labels_allowed
