@@ -35,7 +35,7 @@ resource "azurerm_kubernetes_cluster" "main" {
     ignore_changes = [
       default_node_pool[0].node_count,
       microsoft_defender,
-      monitoring_metrics,
+      monitor_metrics,
       oms_agent
 
     ]
