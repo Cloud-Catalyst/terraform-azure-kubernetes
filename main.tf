@@ -41,17 +41,6 @@ resource "azurerm_kubernetes_cluster" "main" {
 
   automatic_channel_upgrade = var.automatic_channel_upgrade
 
-  monitor_metrics {
-    annotations_allowed = var.monitor_metrics_annotations_allowed
-    labels_allowed      = var.monitor_metrics_labels_allowed
-
-  }
-
-  oms_agent {
-    log_analytics_workspace_id      = var.law_id
-    msi_auth_for_monitoring_enabled = true
-
-  }
 
   azure_active_directory_role_based_access_control {
     managed                = var.enable_aad_rbac
