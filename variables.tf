@@ -334,3 +334,6 @@ variable "automatic_channel_upgrade" {
 variable "acr_tier" {
   default = "Premium"
 }
+variable "acr_name" {
+  default = "none"
+}
