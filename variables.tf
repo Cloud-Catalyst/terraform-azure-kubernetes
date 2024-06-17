@@ -330,3 +330,7 @@ variable "automatic_channel_upgrade" {
   default = "none"
   description = "The upgrade channel for this Kubernetes Cluster. Possible values are patch, rapid, node-image and stable"
 }
+
+variable "acr_tier" {
+  default = "Premium"
+}
